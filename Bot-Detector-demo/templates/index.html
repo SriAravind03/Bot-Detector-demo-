@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bot Detector Demo</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 680px; margin: 3rem auto; padding: 0 1rem; line-height: 1.5; }
+    form { display: grid; gap: 1rem; }
+    label { display: grid; gap: .4rem; }
+    input, button { font: inherit; padding: .65rem; }
+    .honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+    .note { color: #555; }
+  </style>
+</head>
+<body>
+  <h1>Bot Detector Demo</h1>
+  <p>A small Flask example demonstrating a honeypot field used to flag automated-looking form submissions.</p>
+  <form action="/submit" method="post">
+    <label>
+      Username
+      <input type="text" name="username" autocomplete="name" required>
+    </label>
+    <div class="honeypot" aria-hidden="true">
+      <label>
+        Leave this field empty
+        <input type="text" name="middle_name" tabindex="-1" autocomplete="off">
+      </label>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+  <p class="note">Educational demo only: a honeypot is a simple signal, not a reliable way to distinguish every human from every bot.</p>
+</body>
+</html>
